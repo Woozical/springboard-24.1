@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Add Pet{% endblock %}
+
+{% block content %}
+
+<div class="container bg-light" style="width: 55vw; padding: 10px; border-radius: 5px;">
+    <h1 class="text-center">Add Pet</h1>
+    <hr>
+    <form method="POST" action="/add">
+        {{ form.hidden_tag() }}
+        <div class="row">
+            <div class="col">
+            {{form.name.label}}
+            {{form.name(class_="form-control")}}
+            {% if form.name.errors %}
+            <small class="text-danger">{{form.name.errors[0]}}</small>
+            {% endif %}
+            </div>
+            <div class="col">
+            {{form.species.label}}
+            {{form.species(class_="form-control")}}
+            {% if form.species.errors %}
+            <small class="text-danger">{{form.species.errors[0]}}</small>
+            {% endif %}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-2">
+                {{form.age.label}}
+                {{form.age(class_="form-control")}}
+                {% if form.age.errors %}
+                    <small class="text-danger">Enter a whole number</small>
+                {% endif %}
+            </div>
+            <div class="col">
+                {{form.photo_url.label}}
+                {{form.photo_url(class_="form-control")}}
+                {% if form.photo_url.errors %}
+                <small class="text-danger">Enter a valid URL</small>
+                {% endif %}
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            {{form.notes.label}}
+            {{form.notes(class_="form-control")}}
+            {% if form.notes.errors %}
+            <small class="text-danger">{{form.notes.errors[0]}}</small>
+            {% endif %}
+        </div>
+        <br>
+        <div class="text-center">
+            <button class="btn btn-success btn-lg">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
