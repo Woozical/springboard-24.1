@@ -1,12 +1,12 @@
 <div class="card" style="width: 18rem; margin: 5px;">
     {% if pet.photo_url %}
-        <img class="card-img-top" style="border: 1px solid rgb(182, 182, 182); border-radius: 5px; padding: 4px; margin-top: 5px;" src="{{pet.photo_url}}" alt="{{pet.name}}">
+        <img class="card-img-top" style="background-color: rgb(231, 231, 231); border: 1px solid rgb(182, 182, 182); border-radius: 5px; padding: 4px; margin-top: 5px;" src="{{pet.photo_url}}" alt="{{pet.name}}">
     {% else %}
-        <img class="card-img-top" style="border: 1px solid rgb(182, 182, 182); border-radius: 5px; padding: 4px; margin-top: 5px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Paw-print.svg/1200px-Paw-print.svg.png" alt="{{pet.name}}">
+        <img class="card-img-top" style="background-color: rgb(231, 231, 231); border: 1px solid rgb(182, 182, 182); border-radius: 5px; padding: 4px; margin-top: 5px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Paw-print.svg/1200px-Paw-print.svg.png" alt="{{pet.name}}">
     {% endif %}
     <div class="card-body">
-        <h5 class="card-title">{{pet.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{pet.species}}</h6>
+        <h5 class="card-title">{{pet.name.title()}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{pet.species.title()}}</h6>
         <small class="card-text">
             {% if pet.available %}
             <b class="text-success">Available!</b>
