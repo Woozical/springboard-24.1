@@ -9,14 +9,16 @@
     <title>{%block title%}{%endblock%}</title>
 </head>
 <body class="bg-dark">
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for msg in messages %}
-            <p>{{msg}}</p>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
     {% include 'nav.html' %}
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        {% for category, msg in messages %}
+        <div class="text-center alert alert-{{category}}">
+            {{msg}}
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
     {% block content %}
     {% endblock %}
 </body>
