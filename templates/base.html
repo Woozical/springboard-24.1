@@ -9,6 +9,13 @@
     <title>{%block title%}{%endblock%}</title>
 </head>
 <body class="bg-dark">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+            <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     {% include 'nav.html' %}
     {% block content %}
     {% endblock %}

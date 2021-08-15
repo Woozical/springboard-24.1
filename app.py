@@ -2,7 +2,7 @@
 
 from flask import Flask, redirect, render_template, request, flash
 from models import db, connect_db, Pet
-from forms import AddPetForm
+from forms import AddPetForm, EditPetForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'YOUR_KEY_HERE'
@@ -35,3 +35,10 @@ def add_pet():
             return redirect('/add')
     else:   
         return render_template('add-pet.html', form=form)
+
+@app.route('/<int:pet_id>')
+def pet_detail_view(pet_id):
+    pet = Pet.query.get_or_404(pet_id)
+    form = EditPetForm(obj=pet)
+    
+    return render_template('pet-detail.html', pet=pet, form=form)

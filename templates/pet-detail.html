@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}{{pet.name.title()}} - Details{% endblock %}
+
+{% block content %}
+<div class="container bg-light">
+    <h1 class="display-3">{{pet.name.title()}}</h1>
+    <hr>
+    <div class="row justify-content-between">
+        <div class="col-7">
+            <h5>Species: {{pet.species.title()}}</h4>
+            {% if pet.age %}
+            <h5>Age: {{pet.age}}</h4> 
+            {% else %}
+            <h5>Age: Unknown</h5>
+            {% endif %}
+                <br>      
+                <form action="">
+                    <div class="row form-group">
+                        <div class="col-12">
+                            {{form.photo_url.label}}
+                            {{form.photo_url(class_="form-control")}}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row form-group">
+                        <div class="col-9">
+                            {{form.notes.label}}
+                            {{form.notes(class_="form-control")}}
+                        </div>
+                        <div class="col-3">
+                            {{form.available.label}}
+                            {{form.available()}}
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-success btn-lg">Save Changes</button>
+                </form>   
+        </div>
+        <div class="col-4">
+            {% if pet.photo_url %}
+            <img src="{{pet.photo_url}}" style="width: auto; height: 70vh;" class="float-right" alt="Photo of {{pet.name}}">
+            {% else %}
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Paw-print.svg/1200px-Paw-print.svg.png" alt="">
+            {% endif %}
+        </div>
+    </div>
+    <br>
+</div>
+{% endblock %}
