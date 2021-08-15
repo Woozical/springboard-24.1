@@ -15,11 +15,15 @@
             <h5>Age: Unknown</h5>
             {% endif %}
                 <br>      
-                <form action="">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
                     <div class="row form-group">
                         <div class="col-12">
                             {{form.photo_url.label}}
                             {{form.photo_url(class_="form-control")}}
+                            {% if form.photo_url.errors %}
+                                <small class="text-danger">{{form.photo_url.errors[0]}}</small>
+                            {% endif %}
                         </div>
                     </div>
                     <br>
@@ -27,10 +31,17 @@
                         <div class="col-9">
                             {{form.notes.label}}
                             {{form.notes(class_="form-control")}}
+                            <small class="text-muted">Max characters: 100</small>
+                            {% if form.notes.errors %}
+                                <small class="text-danger">{{form.notes.errors[0]}}</small>
+                            {% endif %}
                         </div>
                         <div class="col-3">
                             {{form.available.label}}
                             {{form.available()}}
+                            {% if form.available.errors %}
+                                <small class="text-danger">{{form.available.errors[0]}}</small>
+                            {% endif %}
                         </div>
                     </div>
                     <br>
@@ -39,9 +50,9 @@
         </div>
         <div class="col-4">
             {% if pet.photo_url %}
-            <img src="{{pet.photo_url}}" style="width: auto; height: 70vh;" class="float-right" alt="Photo of {{pet.name}}">
+            <img src="{{pet.photo_url}}" class="pet-photo-detail" alt="Photo of {{pet.name}}">
             {% else %}
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Paw-print.svg/1200px-Paw-print.svg.png" alt="">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Paw-print.svg/1200px-Paw-print.svg.png" class="pet-photo-detail" alt="No Photo">
             {% endif %}
         </div>
     </div>

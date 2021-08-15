@@ -21,7 +21,7 @@ class AddPetForm(FlaskForm):
 class EditPetForm(FlaskForm):
     photo_url = StringField("URL of Photo", validators=[Optional(), URL()])
     notes = StringField("Notes", validators=[
-        Length(max=50, message="50 characters or less"),
+        Length(max=100, message="Character Limit Reached"),
         Optional()
     ])
     available = BooleanField("Available?", default=True)
